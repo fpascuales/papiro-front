@@ -1,0 +1,73 @@
+.b-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height:100%;
+}
+.b-login-form{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    &__input{
+        margin: 10px 0;
+        height: 30px;
+        font-size: 19px;
+        font-family: Rokkitt-Medium;
+        color: var(--color);
+        border: none;
+        border-radius: 2px;
+        border-bottom: solid 2px var(--color);
+        background: transparent;
+        transition: border-bottom .25s ease-in-out;
+        &:hover{
+            border: none;
+            border-radius: 2px;
+            border-bottom: solid 2px var(--color-light); 
+        }
+        &:focus{
+            outline: none;
+            border: none;
+            border-radius: 2px;
+            border-bottom: solid 2px var(--color-light); 
+        }
+    }
+    &__btn{
+        font-family: Rokkitt-Medium;
+        font-size: 19px;
+        color: var(--color);
+        border: solid 2px var(--color);
+        background-color: var(--color-active);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color .25s ease-in-out;
+        &:hover{
+            color: var(--color-medium);
+            background-color: var(--color);
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    &__error{
+        text-align: center;
+        font-family: Rokkitt-Medium;
+        font-size: 19px;
+        color: var(--color-medium);
+    }
+}
+.b-login-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Rokkitt-Light;
+    font-size: 19px;
+    color: var(--color);
+    & p{
+        margin: 5px;
+    }
+    &__link{
+        text-decoration: none;
+        color: var(--color-medium);
+    }
+}

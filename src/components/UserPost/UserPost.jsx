@@ -1,12 +1,8 @@
 import React from 'react'
-import "./UserPost.scss";
-const UserPost = ({user}) => {
+
+const UserPost = ({ userId }) => {
   return (
-    <div>
-      {user && (
-        <p>{user.username}</p>
-      )}
-    </div>
+    <div>UserPost: {userId}</div>
   )
 }
 

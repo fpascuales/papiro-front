@@ -16,13 +16,34 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 loading: false,
                 users: [...action.deploy.users]
-            }
+            };
         case "GET_USER":
             return {
                 ...state,
                 loading: false,
                 userSelected: {...action.deploy.userSelected}
-            }
+            };
+        case "LOGIN":
+            return{
+                ...state,
+                loading: false,
+                user: action.deploy.user,
+                token: action.deploy.token
+            };
+        case "LOGOUT":
+            return {
+                ...state,
+                user: null,
+                token: null
+            };
+        case "ERROR":
+            return {
+                ...state,
+                loading: false,
+                user: null,
+                token: null,
+                error: action.deploy
+            };
         default:
             return state;
     }

@@ -21,13 +21,16 @@ export const postsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 loading: false,
                 postSelected: {...action.deploy.post}
-            }
+            };
         case "UPDATE_POST":
             return {...state};
         case "DELETE_POST":
             return {...state};
-        case "ERROR_POST":
-            return {...state, error: action.deploy};
+        case "ERROR":
+            return {
+                ...state,
+                loading: false,
+                error: action.deploy};
         default:
             return state;
     }

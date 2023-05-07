@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Header.scss";
+import NavBar from '../NavBar/NavBar';
 const Header = () => {
   return (
     <div className='b-header'>
@@ -9,9 +10,7 @@ const Header = () => {
         <input placeholder='Buscar post'></input>
       </div>
       <div className='b-header b-header__section'>
-        <p>Usuarios</p>
-        <p>Crear Post</p>
-        <p>Login / Logout</p>
+        <NavBar/>
       </div>
     </div>
   )

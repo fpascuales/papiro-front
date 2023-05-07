@@ -1,0 +1,40 @@
+.b-menu{
+    display: flex;
+    gap:30px;
+    list-style: none;    
+    &__link a{
+    color: var(--color);
+    text-decoration: none;
+    }
+}
+.modal-login{
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    background-color: var(--color-active);
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  .modal-login.open{
+    transform: translateX(-400px);
+  }
+  .btn-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    border: none;
+    background: none;
+    color: var(--color);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.05);
+    }
+  }
