@@ -1,0 +1,29 @@
+const INITIAL_STATE = {
+    user: null,
+    users: [],
+    userSelected: null,
+    token: null,
+    loading: false,
+    error: null
+}
+
+export const usersReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        case "LOADING":
+            return {...state, loading: true};
+        case "GET_USERS":
+            return {
+                ...state,
+                loading: false,
+                users: [...action.deploy.users]
+            }
+        case "GET_USER":
+            return {
+                ...state,
+                loading: false,
+                userSelected: {...action.deploy.userSelected}
+            }
+        default:
+            return state;
+    }
+}

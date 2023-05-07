@@ -1,0 +1,34 @@
+const INITIAL_STATE = {
+    posts: [],
+    postsFiltered: [],
+    postSelected: null,
+    loading: false,
+    error: null
+};
+
+export const postsReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        case "LOADING":
+            return {...state, loading: true};
+        case "GET_POSTS":
+            return {
+                ...state,
+                loading: false,
+                posts: [...action.deploy.posts]
+            };
+        case "SELECT_POST":
+            return {
+                ...state,
+                loading: false,
+                postSelected: {...action.deploy.post}
+            }
+        case "UPDATE_POST":
+            return {...state};
+        case "DELETE_POST":
+            return {...state};
+        case "ERROR_POST":
+            return {...state, error: action.deploy};
+        default:
+            return state;
+    }
+};
