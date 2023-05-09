@@ -1,0 +1,14 @@
+.b-post-user-info{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: -30px;
+    left: 20px;
+    &__avatar{
+        border-radius: 100%;
+        background-color: var(--color-active);
+        height: 80px;
+        width: 80px;
+        margin-right: 10px;
+    }
+}

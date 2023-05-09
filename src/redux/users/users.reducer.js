@@ -23,6 +23,11 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 userSelected: {...action.deploy.userSelected}
             };
+        case "REGISTER":
+            return {
+                ...state,
+                loading: false
+            };
         case "LOGIN":
             return{
                 ...state,
@@ -40,8 +45,8 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                user: null,
-                token: null,
+                // user: null,
+                // token: null,
                 error: action.deploy
             };
         default:

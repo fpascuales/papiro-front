@@ -1,4 +1,4 @@
-import { API } from "../../shared/Api.js";
+import { API, APIIMAGES } from "../../shared/Api.js";
 import store from "../store.js";
 
 const { dispatch } = store;
@@ -21,5 +21,27 @@ const getAllPosts = async () => {
 //     dispatch({type: "LOADING"});
 //     const 
 // }
+const createPost = async (dataPost, user, onClosePost, navigate) => {
+  try {
+    const formData = new FormData();
+    formData.append("user", user);
+    formData.append("title", dataPost.title);
+    formData.append("body", dataPost.body);
+    formData.append("image", dataPost.image[0]);
+    console.log(formData);
+    const result = await APIIMAGES.post("posts", formData);
+    dispatch({
+      type: "CREATE_POST",
+      deploy: result.data
+    });
+    onClosePost();
+    navigate("/");
+  } catch (error) {
+    dispatch({ type: "ERROR", deploy: error.response.data });
+  }
+}
 
-export { getAllPosts };
+export {
+  getAllPosts,
+  createPost
+};

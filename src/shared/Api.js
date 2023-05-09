@@ -13,7 +13,7 @@ export const APIHeaders2 = {
     "Authorization": localStorage.getItem("token")
 }
 export const APIIMAGES = axios.create({
-    baseURL: import.meta.env.VITE_APP_BASE_URL,
+    baseURL: import.meta.env.VITE_APP_URL_API,
     headers: APIHeaders2
 });
 export const API = axios.create({

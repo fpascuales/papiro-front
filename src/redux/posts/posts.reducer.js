@@ -22,6 +22,11 @@ export const postsReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 postSelected: {...action.deploy.post}
             };
+        case "CREATE_POST":
+            return {
+                ...state,
+                loading: false
+            };
         case "UPDATE_POST":
             return {...state};
         case "DELETE_POST":

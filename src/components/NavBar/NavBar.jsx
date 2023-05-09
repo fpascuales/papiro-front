@@ -2,11 +2,15 @@ import React from "react";
 import "./NavBar.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useModal } from "../../customHooks/useModal";
+import { useModalLogin } from "../../customHooks/useModalLogin";
 import Login from "../Login/Login";
+import { logout } from "../../redux/users/users.actions";
+import { useModalPost } from "../../customHooks/useModalPost";
+import CreatePost from "../CreatePost/CreatePost";
 const NavBar = () => {
   const { user } = useSelector((state) => state.users);
-  const { isOpen, onOpen, onClose } = useModal();
+  const { isOpenLogin, onOpenLogin, onCloseLogin } = useModalLogin();
+  const { isOpenPost, onOpenPost, onClosePost } = useModalPost();
   return (
     <nav>
       <ul className="b-menu">
@@ -15,21 +19,35 @@ const NavBar = () => {
         </li>
         {user && (
           <li className="b-menu__link">
-            <Link to="/createpost">Nuevo Post</Link>
+            <Link to="#" onClick={onOpenPost}>Nuevo Post</Link>
           </li>
         )}
-
+        {!user && (
+          <li className="b-menu__link">
+            <Link to="/register">Registro</Link>
+          </li>
+        )}
         <li className="b-menu__link">
-          <Link to="/register">Registrarse</Link>
-        </li>
-        <li className="b-menu__link">
-          <Link to="#" onClick={onOpen}>Iniciar Sesión</Link>
+          {!user ? (
+            <Link to="#" onClick={onOpenLogin}>
+              Iniciar Sesión
+            </Link>
+          ) : (
+            <Link to="#" onClick={logout}>
+              Cerrar Sesión
+            </Link>
+          )}
         </li>
       </ul>
-      <div className={`modal-login ${isOpen ? "open" : ""}`}>
-        <button className='btn-close' onClick={onClose}>x</button>
-        <Login onClose={onClose}/>
-        </div>
+      <div className={`modal-login ${isOpenLogin ? "open" : ""}`}>
+        <Login onCloseLogin={onCloseLogin}/>
+      </div>
+      {isOpenPost && (
+        <div className="modal-post">
+        <CreatePost onClosePost={onClosePost}/>
+      </div>
+      )}
+      
     </nav>
   );
 };

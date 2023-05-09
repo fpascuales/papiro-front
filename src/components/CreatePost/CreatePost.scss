@@ -1,0 +1,97 @@
+.b-create-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.b-create-post-form{
+    width: 500px;
+    justify-content:start;
+        gap: 30px;
+    &__input{
+        height: 30px;
+        width: 80%;
+        font-size: 19px;
+        font-family: Rokkitt-Medium;
+        color: var(--color);
+        border: none;
+        border-radius: 2px;
+        border-bottom: solid 2px var(--color);
+        background: transparent;
+        transition: border-bottom .25s ease-in-out;
+        &:hover{
+            border: none;
+            border-radius: 2px;
+            border-bottom: solid 2px var(--color-medium); 
+        }
+        &:focus{
+            outline: none;
+            border: none;
+            border-radius: 2px;
+            border-bottom: solid 2px var(--color-medium); 
+        }
+    }
+    &__textarea{
+        height: 150px;
+        width: 80%;
+        font-size: 19px;
+        font-family: Rokkitt-Medium;
+        color: var(--color);
+        border: none;
+        border-radius: 5px;
+        border: solid 2px var(--color);
+        background: transparent;
+        transition: border-bottom .25s ease-in-out;
+        resize: none;
+        &:hover{
+            border: none;
+            border-radius: 5px;
+            border: solid 2px var(--color-medium); 
+        }
+        &:focus{
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            border: solid 2px var(--color-medium); 
+        }
+    }
+    &__image{
+        width: 200px;
+    }
+    &__error{
+        text-align: center;
+        font-family: Rokkitt-Medium;
+        font-size: 19px;
+        color: var(--color-medium);
+    }
+}
+.b-create-post-btns{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    &__btn{
+        width: 100%;
+        font-family: Rokkitt-Medium;
+        font-size: 19px;
+        color: var(--color);
+        border: solid 2px var(--color);
+        background-color: var(--color-active);
+
+        cursor: pointer;
+        transition: background-color .25s ease-in-out;
+        &:hover{
+            color: var(--color-medium);
+            background-color: var(--color);
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    &__left{
+        border-radius: 0 0 0 20px;
+    }
+    &__right{
+        border-radius: 0 0 20px 0;
+    }
+}

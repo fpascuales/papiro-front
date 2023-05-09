@@ -24,17 +24,24 @@
   .modal-login.open{
     transform: translateX(-400px);
   }
-  .btn-close{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    border: none;
-    background: none;
-    color: var(--color);
-    transition: transform 0.2s ease-in-out;
-    cursor: pointer;
-    &:hover{
-        transform: scale(1.05);
-    }
+
+  .modal-post{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    background-color: var(--color-active);
+    border-radius: 20px;
+    z-index: 2;
+    transition: transform 0.3s ease;
   }
+  // .modal-post.open{
+  //   opacity: 1;
+  //   transform: translateX(-400px);
+  // }
