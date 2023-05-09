@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 // import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
 const Account = () => {
     const { user } = useSelector((state) => state.users);
-    const [ isEditMode, setIsEditMode ] = useState(false);
-    console.log(isEditMode);
+    // const [ isEditMode, setIsEditMode ] = useState(false);
+    // console.log(isEditMode);
   return (
     <div className='b-account'>
         <div className='b-account__header'>
