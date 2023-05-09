@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     align-items: center;
-    top: -30px;
+    top: -25px;
     left: 20px;
     &__avatar{
         border-radius: 100%;
@@ -10,5 +10,9 @@
         height: 80px;
         width: 80px;
         margin-right: 10px;
+    }
+    &__name{
+        font-size: 14px;
+        font-family: Rokkitt-Light;
     }
 }
