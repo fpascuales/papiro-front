@@ -38,3 +38,23 @@
         margin-bottom: 50px;
     }
 }
+.b-post-user-info{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: -25px;
+    left: 20px;
+    &__avatar{
+        border-radius: 100%;     
+        height: 80px;
+        width: 80px;
+        margin-right: 10px;
+        &__default{
+            background-color: var(--color-active);
+        }
+    }
+    &__name{
+        font-size: 14px;
+        font-family: Rokkitt-Light;
+    }
+}

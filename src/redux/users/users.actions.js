@@ -10,10 +10,8 @@ const getAllUsers = async () => {
     dispatch({
       type: "GET_USERS",
       deploy: {
-        users: {
-          users: result.data,
-        },
-      },
+        users: result.data
+      }
     });
   } catch (error) {
     dispatch({ type: "ERROR", deploy: error.response.data });

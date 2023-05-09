@@ -22,6 +22,11 @@ const NavBar = () => {
             <Link to="#" onClick={onOpenPost}>Nuevo Post</Link>
           </li>
         )}
+        {user && (
+          <li className="b-menu__link">
+          <Link to="/account">Mi Cuenta</Link>
+        </li>
+        )}
         {!user && (
           <li className="b-menu__link">
             <Link to="/register">Registro</Link>

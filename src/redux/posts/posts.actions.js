@@ -7,11 +7,12 @@ const getAllPosts = async () => {
   try {
     dispatch({ type: "LOADING" });
     const result = await API.get("posts");
+    const sortedPosts = result.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     dispatch({
       type: "GET_POSTS",
       deploy: {
-        posts: result.data,
-      },
+        posts: sortedPosts
+      }
     });
   } catch (error) {
     dispatch({ type: "ERROR", deploy: error.response.data });
