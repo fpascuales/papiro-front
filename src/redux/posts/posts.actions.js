@@ -10,12 +10,12 @@ const getAllPosts = async () => {
     const sortedPosts = result.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     dispatch({
       type: "GET_POSTS",
-      deploy: {
+      payload: {
         posts: sortedPosts
       }
     });
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 };
 // const getPostById = async () => {
@@ -28,21 +28,36 @@ const createPost = async (dataPost, user, onClosePost, navigate) => {
     formData.append("user", user);
     formData.append("title", dataPost.title);
     formData.append("body", dataPost.body);
-    formData.append("image", dataPost.image[0]);
-    console.log(formData);
+    if(dataPost.image[0]){
+      formData.append("image", dataPost.image[0]);
+    }
     const result = await APIIMAGES.post("posts", formData);
+    await getAllPosts();
     dispatch({
       type: "CREATE_POST",
-      deploy: result.data
+      payload: result.data
     });
     onClosePost();
     navigate("/");
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
+  }
+}
+const deletePost = async (postId) => {
+  try {
+    const result = await API.delete(`posts/${postId}`);
+    await getAllPosts();
+    dispatch({
+      type: "DELETE_POST",
+      payload: result.data
+    });
+  } catch (error) {
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 }
 
 export {
   getAllPosts,
-  createPost
+  createPost,
+  deletePost
 };

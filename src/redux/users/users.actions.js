@@ -1,6 +1,5 @@
 import { API, APIIMAGES } from "../../shared/Api";
 import store from "../store";
-
 const { dispatch } = store;
 
 const getAllUsers = async () => {
@@ -9,12 +8,12 @@ const getAllUsers = async () => {
     const result = await API.get("users");
     dispatch({
       type: "GET_USERS",
-      deploy: {
+      payload: {
         users: result.data
       }
     });
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 };
 const getUserById = async (userId) => {
@@ -22,12 +21,12 @@ const getUserById = async (userId) => {
     const result = await API.get(`users/${userId}`);
     dispatch({
       type: "GET_USER",
-      deploy: {
+      payload: {
         userSelected: result.data,
       },
     });
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 };
 const login = async (dataLogin, onCloseLogin) => {
@@ -36,7 +35,7 @@ const login = async (dataLogin, onCloseLogin) => {
     const result = await API.post("users/login", dataLogin);
     dispatch({
       type: "LOGIN",
-      deploy: {
+      payload: {
         user: result.data.userToLog,
         token: result.data.token,
       },
@@ -44,7 +43,7 @@ const login = async (dataLogin, onCloseLogin) => {
     localStorage.setItem("token", result.data.token);
     onCloseLogin();
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 };
 const signUp = async (dataRegister, navigate) => {
@@ -58,7 +57,7 @@ const signUp = async (dataRegister, navigate) => {
     const result = await APIIMAGES.post("users", formData);
     dispatch({
       type: "REGISTER",
-      deploy: result.data
+      payload: result.data
     });
     const user = {
       username: dataRegister.username,
@@ -67,7 +66,7 @@ const signUp = async (dataRegister, navigate) => {
     login(user);
     navigate("/");
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 }
 const checkSession = async () => {
@@ -76,21 +75,37 @@ const checkSession = async () => {
     const result = await API.get("users/check");
     dispatch({
       type: "LOGIN",
-      deploy: {
+      payload: {
         user: result.data === "No estás autorizado" ? null : result.data,
         token: localStorage.getItem("token")
       }
     });
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 }
-const logout = () => {
+const updateUser = async (userId, userToUpdate) => {
   try {
-    localStorage.removeItem("token");
-    dispatch({ type: "LOGOUT" }); 
+    dispatch({ type: "LOADING" });
+    const result = await API.put(`users/${userId}`, userToUpdate);
+    dispatch({
+      type: "UPDATE_USER",
+      payload: result.data
+    });
+    
   } catch (error) {
-    dispatch({ type: "ERROR", deploy: error.response.data });
+    dispatch({ type: "ERROR", payload: error.response.data });
+  }
+}
+const logout = (navigate) => {
+  try {
+    setTimeout(() => {
+      navigate("/");
+      dispatch({ type: "LOGOUT" });
+    }, 500);
+    localStorage.removeItem("token");
+  } catch (error) {
+    dispatch({ type: "ERROR", payload: error.response.data });
   }
 }
 
@@ -100,5 +115,6 @@ export {
     login,
     signUp,
     checkSession,
+    updateUser,
     logout
 };

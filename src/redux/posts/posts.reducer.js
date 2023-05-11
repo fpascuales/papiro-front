@@ -14,13 +14,13 @@ export const postsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                posts: [...action.deploy.posts]
+                posts: [...action.payload.posts]
             };
         case "SELECT_POST":
             return {
                 ...state,
                 loading: false,
-                postSelected: {...action.deploy.post}
+                postSelected: {...action.payload.post}
             };
         case "CREATE_POST":
             return {
@@ -35,7 +35,7 @@ export const postsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                error: action.deploy};
+                error: action.payload};
         default:
             return state;
     }

@@ -15,25 +15,31 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                users: [...action.deploy.users]
+                users: [...action.payload.users]
             };
         case "GET_USER":
             return {
                 ...state,
                 loading: false,
-                userSelected: {...action.deploy.userSelected}
+                userSelected: {...action.payload.userSelected}
             };
         case "REGISTER":
             return {
                 ...state,
                 loading: false
             };
+        case "UPDATE_USER":
+            return {
+                ...state,
+                user: action.payload,
+                loading: false
+            };
         case "LOGIN":
             return{
                 ...state,
                 loading: false,
-                user: action.deploy.user,
-                token: action.deploy.token
+                user: action.payload.user,
+                token: action.payload.token
             };
         case "LOGOUT":
             return {
@@ -45,9 +51,7 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                // user: null,
-                // token: null,
-                error: action.deploy
+                error: action.payload
             };
         default:
             return state;

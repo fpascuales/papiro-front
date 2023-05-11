@@ -52,16 +52,16 @@
         border-bottom: solid 2px var(--color);
         background: transparent;
         transition: border-bottom .25s ease-in-out;
-        // &:hover{
-        //     border: none;
-        //     border-radius: 2px;
-        //     border-bottom: solid 2px var(--color-medium); 
-        // }
-        // &:focus{
-        //     outline: none;
-        //     border: none;
-        //     border-radius: 2px;
-        //     border-bottom: solid 2px var(--color-medium); 
-        // }
+        &:hover{
+            border: none;
+            border-radius: 2px;
+            border-bottom: solid 2px var(--color-active); 
+        }
+        &:focus{
+            outline: none;
+            border: none;
+            border-radius: 2px;
+            border-bottom: solid 2px var(--color-active); 
+        }
     }
 }

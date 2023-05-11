@@ -1,47 +1,62 @@
-.b-menu{
-    display: flex;
-    gap:30px;
-    list-style: none;    
-    &__link a{
+.b-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+
+  &__link a {
     color: var(--color);
     text-decoration: none;
-    }
-}
-.modal-login{
-    position: fixed;
-    right: -400px;
-    top: 0;
-    width: 400px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 40px;
-    background-color: var(--color-active);
-    z-index: 2;
-    transition: transform 0.3s ease;
-  }
-  .modal-login.open{
-    transform: translateX(-400px);
   }
 
-  .modal-post{
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    background-color: var(--color-active);
-    border-radius: 20px;
-    z-index: 2;
-    transition: transform 0.3s ease;
+  &__icon {
+    color: var(--color);
+    font-size: 30px !important;
+    transition: transform 0.25s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
-  // .modal-post.open{
-  //   opacity: 1;
-  //   transform: translateX(-400px);
-  // }
+}
+
+.modal-login {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  background-color: var(--color-active);
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.modal-login.open {
+  transform: translateX(-400px);
+}
+
+.modal-post {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  background-color: var(--color-active);
+  border-radius: 20px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+// .modal-post.open{
+//   opacity: 1;
+//   transform: translateX(-400px);
+// }

@@ -1,23 +1,48 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from "react";
 import "./Account.scss";
-import { useSelector } from 'react-redux';
-// import ButtonEdit from '../../components/ButtonEdit/ButtonEdit';
+import { useSelector } from "react-redux";
+import ButtonEdit from "../../components/ButtonEdit/ButtonEdit";
+import { useModalSuccess } from "../../customHooks/useModalSuccess";
+import Toast from "../../components/Toast/Toast";
 const Account = () => {
-    const { user } = useSelector((state) => state.users);
-    // const [ isEditMode, setIsEditMode ] = useState(false);
-    // console.log(isEditMode);
+  const { user } = useSelector((state) => state.users);
+  const { isOpenSuccess, onOpenSuccess, onCloseSuccess } = useModalSuccess();
+  const [isEditMode, setIsEditMode] = useState(false);  
+  const [editedUser, setEditedUser] = useState({
+    email: user ? user.email : ""
+  });
+  useEffect(() => {
+    if(user) {
+      setEditedUser((prevState) => ({
+        ...prevState,
+        email: user.email
+      }));
+    }
+  }, [user]);
+  const handleEditUser = (e) => {
+    const { name, value } = e.target;
+    setEditedUser((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
   return (
-    <div className='b-account'>
-        <div className='b-account__header'>
-        <h1 className='b-account__title'>Mi Cuenta</h1>
-        <button
-        onClick={setIsEditMode(true)}
-        >EDITAR</button>
-        {/* <ButtonEdit setIsEditMode={setIsEditMode}/> */}
-        </div>
-      <div className="b-account-info">  
-        <div>    
-            <img className='b-account-left' src={user.image}/>
+    <>
+    {user !== null && (
+      <div className="b-account">
+      <div className="b-account__header">
+        <h1 className="b-account__title">Mi Cuenta</h1>
+        <ButtonEdit
+          setIsEditMode={setIsEditMode}
+          isEditMode={isEditMode}
+          editedUser={editedUser}
+          userId={user._id}
+          onOpenSuccess={onOpenSuccess}
+        />
+      </div>
+      <div className="b-account-info">
+        <div>
+          <img className="b-account-left" src={user.image} />
         </div>
         <div className="b-account-right">
           <div className="b-account-right__right-one">
@@ -28,24 +53,30 @@ const Account = () => {
           <div className="b-account-right__right-two">
             <input
               className="b-account-right__input"
-              placeholder={user.username}
-              disabled
+              name="username"
+              value={user.username}
+              readOnly
             ></input>
             <input
               className="b-account-right__input"
-              placeholder={user.email}
-              disabled
+              name="email"
+              value={editedUser.email}
+              onChange={handleEditUser}
+              readOnly={!isEditMode}
             ></input>
             <input
               className="b-account-right__input"
-              placeholder={user.rol}
-              disabled
+              value={user.rol}
+              readOnly
             ></input>
           </div>
         </div>
       </div>
+      {isOpenSuccess && <Toast  isOpenSuccess={isOpenSuccess} onCloseSuccess={onCloseSuccess} isEditMode={isEditMode}/>}
     </div>
+    )}
+    </> 
   );
-}
+};
 
-export default Account
+export default Account;
