@@ -1,0 +1,33 @@
+.modal-user {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  background-color: var(--color-active);
+  border-radius: 20px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+.modal-user-close{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 40px !important;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .modal-user{
+    width: 100vw;
+    top: 90px;
+    left: 0;
+    transform: none;
+    border-radius: 0px;
+    height: calc(100vh - 170px);
+  }
+}

@@ -1,0 +1,29 @@
+.modal-confirm {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: Rokkitt-SemiBold;
+  font-size: 20px;
+  text-align: center;
+  color: var(--color);
+  background-color: var(--color-alert);
+  border-radius: 20px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+.modal-confirm-icons{
+  display: flex;
+  gap: 30px;
+}
+.modal-confirm-icon{
+  font-size: 40px !important;
+  cursor: pointer;
+}

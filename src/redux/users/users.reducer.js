@@ -34,6 +34,8 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
                 user: action.payload,
                 loading: false
             };
+        case "UPDATE_OTHER_USER":
+            return {...state};
         case "LOGIN":
             return{
                 ...state,
@@ -47,6 +49,8 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
                 user: null,
                 token: null
             };
+        case "DELETE_USER":
+            return {...state};
         case "ERROR":
             return {
                 ...state,

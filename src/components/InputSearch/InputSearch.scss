@@ -1,0 +1,39 @@
+.b-search{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 400px;   
+    border-bottom: solid 2px var(--color);
+    &:hover{
+        border-bottom: solid 2px var(--color-active);
+    }
+}
+.b-input-search{
+    width: 85%;
+    height: 30px;
+    border: none;
+    color: var(--color);
+    font-family: Rokkitt-Regular;
+    font-size: 16px;
+    background: transparent;
+    &:focus{
+        outline: none;
+    }
+}
+.b-icon-search{
+    cursor: pointer;
+    &:hover{
+        color: var(--color-active);
+    }
+}
+.visually-hidden {
+    visibility: hidden;
+}
+@media only screen and (max-width: 600px) {
+    .b-search{
+        width: 300px;
+    }
+    .b-input-search{
+        width: 80%;
+    }
+}

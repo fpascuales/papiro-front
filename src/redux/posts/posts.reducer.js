@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     posts: [],
     postsFiltered: [],
+    postsByUser: [],
     postSelected: null,
     loading: false,
     error: null
@@ -29,6 +30,24 @@ export const postsReducer = (state = INITIAL_STATE, action) => {
             };
         case "UPDATE_POST":
             return {...state};
+        case "FILTERED_POSTS":
+            return {
+                ...state,
+                loading: false,
+                postsFiltered: [...action.payload.postsFiltered]
+            };
+        case "SEARCH_POSTS":
+            return {
+                ...state,
+                loading: false,
+                postsByUser: [...action.payload.postsByUser]
+            };
+        case "CLEAR_SEARCH":
+            return{
+                ...state,
+                loading: false,
+                postsByUser: []
+            }
         case "DELETE_POST":
             return {...state};
         case "ERROR":

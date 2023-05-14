@@ -1,0 +1,14 @@
+.b-btn-admin{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+    color: var(--color-medium);
+    width: 20%;
+    &__icon{
+        font-size: 30px !important;
+        cursor: pointer;
+        &:hover{
+            color: var(--color-active);
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.b-user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    color: var(--color-dark);
+    background-color: var(--color);
+    border-radius: 50px 10px 10px 50px;
+    &--left{
+        justify-content: start;
+        gap: 20px;
+        width:80%;
+    }
+    &__image{
+        border-radius: 50px;     
+        height: 80px;
+        width: 80px;
+    }
+    &__username{
+        font-size: 20px;
+        font-family: Rokkitt-SemiBold;
+        color: var(--color-active);
+    }
+}

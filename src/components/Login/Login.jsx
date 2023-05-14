@@ -3,11 +3,11 @@ import "./Login.scss";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { login } from "../../redux/users/users.actions";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 const Login = ({ onCloseLogin }) => {
   const { register, handleSubmit } = useForm();
   const { error } = useSelector((state) => state.users);
+  const navigate = useNavigate();
   return (
     <div className="b-login">
       <button className="btn-close-login" onClick={onCloseLogin}>
@@ -15,7 +15,7 @@ const Login = ({ onCloseLogin }) => {
       </button>
       <form
         className="b-login-form"
-        onSubmit={handleSubmit((dataLogin) => login(dataLogin, onCloseLogin))}
+        onSubmit={handleSubmit((dataLogin) => login(dataLogin, onCloseLogin, navigate))}
       >
         <input
           className="b-login-form__input"
@@ -30,20 +30,19 @@ const Login = ({ onCloseLogin }) => {
         />
         <p className="b-login-form__error">{error && error}</p>
         <button className="b-login-form__btn">
-        {/* <button className="b-login-form__btn" onClick={onCloseLogin}> */}
           Iniciar Sesión
         </button>
       </form>
       <div className="b-login-info">
         <p>¿No tienes una cuenta?</p>
         <p>
-          Regístraté{" "}
+          Regístrate{" "}
           <Link
             className="b-login-info__link"
             to="/register"
             onClick={onCloseLogin}
           >
-            aquí
+          aquí
           </Link>
         </p>
       </div>

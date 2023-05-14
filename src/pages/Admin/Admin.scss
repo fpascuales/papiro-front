@@ -1,25 +1,15 @@
-.b-account{
+.b-admin{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    &__header{
-        width: 650px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+    gap: 20px;
     &__title{
-        margin-left: 80px;
         font-family: Rokkitt-Thin;
-    }
-    &__main{
-        display: flex;
-        gap: 80px;
     }
 }
 @media only screen and (max-width: 600px) {
-    .b-account{
+    .b-admin{
+        margin: 20px 0 70px 0;
         &__header{
             position: absolute;
             display: flex;
@@ -29,10 +19,6 @@
             top: 0px;
             width: 100vw;
             padding-right: 30px;
-        }
-        &__main{
-            flex-direction: column;
-            margin: 20px 0 70px 0;
         }
     }
 }

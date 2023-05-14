@@ -84,4 +84,30 @@
     &:hover{
         transform: scale(1.05);
     }
-  }
+}
+.modal-login {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    background-color: var(--color-active);
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+.modal-login.open {
+    transform: translateX(-400px);
+}
+@media only screen and (max-width: 600px) {
+    .modal-login{
+        width: 100vw;
+        right: -100%;
+    }
+    .modal-login.open{
+        transform: translateX(-100vw);
+    }
+}

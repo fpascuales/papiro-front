@@ -8,6 +8,7 @@
 .b-register-form{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 200px;
     &__input{
         margin: 10px 0;
@@ -35,19 +36,26 @@
     &__btn{
         font-family: Rokkitt-Medium;
         font-size: 19px;
+        margin-top: 10px;
+        padding: 5px 10px;
         color: var(--color);
         border: solid 2px var(--color);
-        background-color: var(--color-active);
+        background: transparent;
         border-radius: 20px;
         cursor: pointer;
         transition: background-color .25s ease-in-out;
         &:hover{
-            color: var(--color-medium);
-            background-color: var(--color);
+            border: solid 2px var(--color-active);
+            background-color: var(--color-active);
         }
         &:focus{
             outline: none;
         }
+    }
+    &__image{
+        margin-top: 20px;
+        border-radius: 20px;
+        height: 200px;
     }
     &__error{
         text-align: center;

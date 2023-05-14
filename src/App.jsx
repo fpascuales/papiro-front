@@ -6,9 +6,12 @@ import Routing from './components/Routing/Routing';
 import { checkSession, getAllUsers } from './redux/users/users.actions';
 function App() {
   useEffect(() => {
-    checkSession();
     getAllUsers();
     getAllPosts();
+    const token = localStorage.getItem("token");
+    if(token) {
+      checkSession();
+    }
 }, [])
   return (
     <>

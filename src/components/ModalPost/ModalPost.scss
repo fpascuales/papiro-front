@@ -8,7 +8,7 @@
 .b-create-post-form{
     width: 500px;
     justify-content:start;
-        gap: 30px;
+    gap: 20px;
     &__input{
         height: 30px;
         width: 80%;
@@ -42,7 +42,7 @@
         border-radius: 5px;
         border: solid 2px var(--color);
         background: transparent;
-        transition: border-bottom .25s ease-in-out;
+        transition: border .25s ease-in-out;
         resize: none;
         &:hover{
             border: none;
@@ -57,7 +57,7 @@
         }
     }
     &__image{
-        width: 200px;
+        height: 200px;
     }
     &__error{
         text-align: center;
@@ -67,17 +67,18 @@
     }
 }
 .b-create-post-btns{
+    position: absolute;
+    bottom: 0;
     display: flex;
     width: 100%;
-    height: 50px;
+    height: 35px;
     &__btn{
         width: 100%;
         font-family: Rokkitt-Medium;
         font-size: 19px;
         color: var(--color);
-        border: solid 2px var(--color);
+        border: none;
         background-color: var(--color-active);
-
         cursor: pointer;
         transition: background-color .25s ease-in-out;
         &:hover{
@@ -93,5 +94,56 @@
     }
     &__right{
         border-radius: 0 0 20px 0;
+    }
+}
+.e-del-image{
+    position: absolute;
+    padding: 5px;
+    background-color: var(--color-medium);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color transform .25s ease-in-out;
+    &:hover{
+        transform: scale(1.1);
+        background-color: var(--color-dark);
+    }
+}
+.e-textarea-info{
+    margin: 0;
+    font-family: Rokkitt-ExtraLight;
+    font-size: 17px;
+    color: var(--color);
+}
+.modal-post {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    background-color: var(--color-active);
+    border-radius: 20px;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+@media only screen and (max-width: 600px) {
+    .modal-post{
+        width: 100vw;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0px;
+        height: calc(100vh - 80px);
+    }
+    .b-create-post{
+        margin-top: 20px;
+    }
+    .b-create-post-btns{
+        position: relative;
+        height: 50px;
     }
 }

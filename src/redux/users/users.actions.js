@@ -29,7 +29,7 @@ const getUserById = async (userId) => {
     dispatch({ type: "ERROR", payload: error.response.data });
   }
 };
-const login = async (dataLogin, onCloseLogin) => {
+const login = async (dataLogin, onCloseLogin, navigate) => {
   try {
     dispatch({ type: "LOADING" });
     const result = await API.post("users/login", dataLogin);
@@ -42,6 +42,7 @@ const login = async (dataLogin, onCloseLogin) => {
     });
     localStorage.setItem("token", result.data.token);
     onCloseLogin();
+    navigate("/");
   } catch (error) {
     dispatch({ type: "ERROR", payload: error.response.data });
   }
@@ -71,28 +72,66 @@ const signUp = async (dataRegister, navigate) => {
 }
 const checkSession = async () => {
   try {
-    dispatch({ type: "LOADING" });
     const result = await API.get("users/check");
+    const isLoggedIn = result.data !== "No estás autorizado";
     dispatch({
       type: "LOGIN",
       payload: {
-        user: result.data === "No estás autorizado" ? null : result.data,
+        user: isLoggedIn ? result.data : null,
         token: localStorage.getItem("token")
       }
+    });
+  }
+  catch (error) {
+    dispatch({ type: "ERROR", payload: error.response.data });
+  }
+}
+const updateUser = async (userId, userToUpdate, onOpenSuccess) => {
+  try {
+    dispatch({ type: "LOADING" });
+    const formData = new FormData();
+    formData.append("email", userToUpdate.email);
+    if(userToUpdate.password){
+      formData.append("password", userToUpdate.password);
+    }
+    if(userToUpdate.image[0]){
+      formData.append("image", userToUpdate.image[0]);
+    }
+    if(userToUpdate.rol){
+      formData.append("rol", userToUpdate.rol);
+    }
+    const result = await APIIMAGES.put(`users/${userId}`, formData);
+    onOpenSuccess();
+    dispatch({
+      type: "UPDATE_USER",
+      payload: result.data
     });
   } catch (error) {
     dispatch({ type: "ERROR", payload: error.response.data });
   }
 }
-const updateUser = async (userId, userToUpdate) => {
+
+const updateOtherUser = async (userId, userToUpdate, onCloseUser, onOpenSuccess) => {
   try {
     dispatch({ type: "LOADING" });
-    const result = await API.put(`users/${userId}`, userToUpdate);
+    const formData = new FormData();
+    formData.append("email", userToUpdate.email);
+    if(userToUpdate.password){
+      formData.append("password", userToUpdate.password);
+    }
+    if(userToUpdate.image[0]){
+      formData.append("image", userToUpdate.image[0]);
+    }
+    if(userToUpdate.rol){
+      formData.append("rol", userToUpdate.rol);
+    }
+    const result = await APIIMAGES.put(`users/${userId}`, formData);
+    onCloseUser();
+    onOpenSuccess();
     dispatch({
-      type: "UPDATE_USER",
+      type: "UPDATE_OTHER_USER",
       payload: result.data
     });
-    
   } catch (error) {
     dispatch({ type: "ERROR", payload: error.response.data });
   }
@@ -108,6 +147,20 @@ const logout = (navigate) => {
     dispatch({ type: "ERROR", payload: error.response.data });
   }
 }
+const deleteUser = async (userId, onCloseConfirm, onOpenSuccess) => {
+  try {
+    const result = await API.delete(`users/${userId}`);
+    await getAllUsers();
+    onCloseConfirm();
+    onOpenSuccess();
+    dispatch({
+      type: "DELETE_USER",
+      payload: result.data
+    });
+  } catch (error) {
+    dispatch({ type: "ERROR", payload: error.response.data });
+  }
+}
 
 export {
     getAllUsers,
@@ -116,5 +169,7 @@ export {
     signUp,
     checkSession,
     updateUser,
-    logout
+    updateOtherUser,
+    logout,
+    deleteUser
 };

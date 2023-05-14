@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: -100px; /* Cambia la posición inicial para que esté fuera de la pantalla */
+  bottom: -100px;
   left: 50%;
   transform: translateX(-50%);
   padding: 5px 20px;
@@ -18,14 +18,12 @@
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
 .b-toast.visible {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
-  bottom: 10px; /* Añade la posición final */
+  bottom: 10px;
 }
-
 @keyframes slideUp {
   0% {
     transform: translateX(-50%) translateY(100%);
@@ -34,14 +32,18 @@
     transform: translateX(-50%) translateY(0);
   }
 }
-
 .slide-up-enter {
   animation: slideUp 0.3s ease forwards;
 }
-
 .slide-up-exit {
   animation: slideUp 0.3s ease reverse forwards;
 }
 .toast-icon {
   margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .b-toast.visible{
+    bottom: 60px;
+  }
 }
