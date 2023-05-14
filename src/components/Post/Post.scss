@@ -59,6 +59,7 @@
 }
 @media only screen and (max-width: 600px) {
     .b-post{
+        width: 370px;
         &__image{
             max-height: 300px;
             object-fit: contain;
