@@ -117,3 +117,8 @@
 .b-upload-hidden{
     display: none;
 }
+@media only screen and (max-width: 600px) {
+    .b-account-info{
+        gap: 30px;
+    }
+}

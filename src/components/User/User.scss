@@ -22,3 +22,8 @@
         color: var(--color-active);
     }
 }
+@media only screen and (max-width: 600px) {
+    .b-user{
+        width: 350px;
+    }
+}
