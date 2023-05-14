@@ -138,16 +138,19 @@
         transform: none;
         border-radius: 0px;
         height: calc(100vh - 80px);
+        z-index: 999;
     }
     .b-create-post-form{
         width: 350px;
     }
     .b-create-post{
         margin-top: 20px;
+        height: 100%;
     }
     .b-create-post-btns{
         position: relative;
-        height: 50px;
+        height: 80px;
+        width: 100%;
         border-radius: 0px;
         &:hover{
             border-radius: 0px;
