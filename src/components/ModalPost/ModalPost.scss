@@ -132,12 +132,15 @@
 }
 @media only screen and (max-width: 600px) {
     .modal-post{
-        width: 100vw;
+        width: 100%;
         top: 0;
         left: 0;
         transform: none;
         border-radius: 0px;
         height: calc(100vh - 80px);
+    }
+    .b-create-post-form{
+        width: 350px;
     }
     .b-create-post{
         margin-top: 20px;
@@ -145,5 +148,15 @@
     .b-create-post-btns{
         position: relative;
         height: 50px;
-    }
+        border-radius: 0px;
+        &:hover{
+            border-radius: 0px;
+        }
+        &__left{
+            border-radius: 0px;
+        }
+        &__right{
+            border-radius: 0px;
+        }
+    }    
 }
