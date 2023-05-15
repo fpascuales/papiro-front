@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ButtonsPosts from "../ButtonsPosts/ButtonsPosts";
 import moment from "moment/moment";
 import "moment/locale/es";
+import Likes from "../Likes/Likes";
 const Post = ({ post, isAccount, onOpenSuccess }) => {
   moment.locale("es");
   const { users, user } = useSelector((state) => state.users);
@@ -37,6 +38,8 @@ const Post = ({ post, isAccount, onOpenSuccess }) => {
                 <img className="b-post-user-info__avatar" src={userPosted.image !== "undefined" ? userPosted.image : defaultImage}/>
               </div>
               <p className="b-post-user-info__name">{userPosted.username}</p>
+              {/* <Likes likes={post.likes}/> */}
+
             </>
             )}
           </div>
