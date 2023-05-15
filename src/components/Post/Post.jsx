@@ -5,15 +5,16 @@ import ButtonsPosts from "../ButtonsPosts/ButtonsPosts";
 import moment from "moment/moment";
 import "moment/locale/es";
 const Post = ({ post, isAccount, onOpenSuccess }) => {
+  moment.locale("es");
   const { users, user } = useSelector((state) => state.users);
   const [userPosted, setUserPosted] = useState(null);
+  const date = new Date(post.createdAt);
+  const postedAgo = moment(date).fromNow();
+  const defaultImage = import.meta.env.VITE_APP_DEFAULT_IMAGE;
   useEffect(() => {
     const foundUser = users.find((user) => user._id === post.user);
     setUserPosted(foundUser);
-  }, [users, user]);
-  const date = new Date(post.createdAt);
-  moment.locale("es");
-  const postedAgo = moment(date).fromNow()
+  }, [users, user]);  
   return (
     <>
       <div className="b-post">
@@ -31,16 +32,11 @@ const Post = ({ post, isAccount, onOpenSuccess }) => {
           <>
           <div className="b-post-user-info">
             {!isAccount && (
-              <>
-              <div className="b-post-user-info__avatar">
-              {userPosted.image !== "undefined" ?
-                <img
-                className="b-post-user-info__avatar"
-                src={userPosted.image}
-              />
-              : ''}
-            </div>
-            <p className="b-post-user-info__name">{userPosted.username}</p>
+            <>
+              <div className="b-post-user-info__avatar">             
+                <img className="b-post-user-info__avatar" src={userPosted.image !== "undefined" ? userPosted.image : defaultImage}/>
+              </div>
+              <p className="b-post-user-info__name">{userPosted.username}</p>
             </>
             )}
           </div>

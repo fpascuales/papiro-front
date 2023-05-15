@@ -17,7 +17,6 @@ const Account = () => {
   const onSubmit = (dataUser) => {
     if (isEditMode && user) {
       updateUser(user._id, dataUser, onOpenSuccess);
-      setIsEditMode(isEditMode);
     }
     setIsEditMode(!isEditMode);
   };
@@ -28,6 +27,12 @@ const Account = () => {
       setValue("email", user.email);
     }
   }, [user, posts, setValue]);
+  const handleCancel = () => {
+    setValue("username", user.username);
+    setValue("email", user.email);
+    setValue("password", '');
+    setIsEditMode(false);
+  }
   return (
     <>
       {user !== null && (
@@ -36,12 +41,13 @@ const Account = () => {
             <h1 className="b-account__title">Mi Cuenta</h1>
           </div>
           <div className="b-account__main">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="b-form-account" onSubmit={handleSubmit(onSubmit)}>
               <UserInfo
                 isEditMode={isEditMode}
                 register={register}
                 userInfo={user}
-              />
+                handleCancel={handleCancel}
+              />             
             </form>
             <div>
               {postsFiltered.map((post) => {

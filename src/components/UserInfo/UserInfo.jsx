@@ -3,15 +3,27 @@ import "./UserInfo.scss";
 import { DeleteForever } from "@mui/icons-material";
 import UploadFile from "../UploadFile/UploadFile";
 import { useSelector } from "react-redux";
-const UserInfo = ({ isEditMode, register, userInfo, adminView}) => {
+const UserInfo = ({ isEditMode, register, userInfo, adminView, handleCancel}) => {
   const { user } = useSelector((state) => state.users);
   const [image, setImage] = useState(null);
+  const defaultImage = import.meta.env.VITE_APP_DEFAULT_IMAGE;
+  const onCancelClick = () => {
+    handleCancel();
+  }
+  const onResetImage = () => {
+    if(userInfo.image !== 'undefined'){
+      setImage(userInfo.image);
+    }
+    else{
+      setImage(defaultImage);
+    }
+  }
   return (
     <div className="b-account-info">
-      {image && <DeleteForever className="e-del-image" />}
+      {image && isEditMode && <DeleteForever className="e-del-image" onClick={onResetImage}/>}
       {image || userInfo.image !== "undefined" ? (
         <img className="b-account-info__image" src={image ? image : userInfo.image}/>
-      ) : null}      
+      ) : <img className="b-account-info__image" src={defaultImage}/>}      
       <div className="b-account-user">
         <div className="b-account-user__left">
           <p>Usuario</p>
@@ -51,7 +63,12 @@ const UserInfo = ({ isEditMode, register, userInfo, adminView}) => {
           </div>
         </>
       )}
-      <button className="btn-edit">{isEditMode ? "GUARDAR" : "EDITAR"}</button>
+      <div className="b-btns-account">
+        {isEditMode && (
+          <button className="btn-edit" onClick={onCancelClick}>CANCELAR</button>
+        )}
+        <button className="btn-edit">{isEditMode ? "GUARDAR" : "EDITAR"}</button>    
+      </div>
     </div>
   );
 };
