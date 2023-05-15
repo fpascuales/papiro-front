@@ -2,7 +2,8 @@ import React from "react";
 import "./User.scss";
 import ButtonsAdmin from "../ButtonsAdmin/ButtonsAdmin";
 const User = ({ user, onOpenSuccess }) => {
-  const defaultImage = import.meta.env.VITE_APP_DEFAULT_IMAGE;
+  const defaultImage = '/assets/icons/papiro-icon-light.png';
+  console.log(user.image);
   return (
     <div className="b-user">
       <div className="b-user b-user--left">

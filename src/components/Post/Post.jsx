@@ -10,7 +10,7 @@ const Post = ({ post, isAccount, onOpenSuccess }) => {
   const [userPosted, setUserPosted] = useState(null);
   const date = new Date(post.createdAt);
   const postedAgo = moment(date).fromNow();
-  const defaultImage = import.meta.env.VITE_APP_DEFAULT_IMAGE;
+  const defaultImage = '/assets/icons/papiro-icon-light.png';
   useEffect(() => {
     const foundUser = users.find((user) => user._id === post.user);
     setUserPosted(foundUser);

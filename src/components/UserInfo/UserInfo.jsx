@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const UserInfo = ({ isEditMode, register, userInfo, adminView, handleCancel}) => {
   const { user } = useSelector((state) => state.users);
   const [image, setImage] = useState(null);
-  const defaultImage = import.meta.env.VITE_APP_DEFAULT_IMAGE;
+  const defaultImage = '/assets/icons/papiro-icon-light.png';
   const onCancelClick = () => {
     handleCancel();
   }
