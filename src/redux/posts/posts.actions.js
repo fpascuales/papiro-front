@@ -110,6 +110,7 @@ const updatePost = async (postId, postToUpdate, user, onClosePost, onOpenSuccess
 }
 const deletePost = async (postId, onOpenSuccess) => {
   try {
+    dispatch({ type: "LOADING" });
     const result = await API.delete(`posts/${postId}`);
     await getAllPosts();
     onOpenSuccess();

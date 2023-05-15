@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 import User from '../../components/User/User';
 import { useModalSuccess } from '../../customHooks/useModalSuccess';
 import Toast from '../../components/Toast/Toast';
+import Loading from '../../components/Loading/Loading';
 const Admin = () => {
-    const { users } = useSelector((state) => state.users);
+    const { loading, users } = useSelector((state) => state.users);
     const { isOpenSuccess, onOpenSuccess, onCloseSuccess } = useModalSuccess();
   return (
     <div className='b-admin'>
+      {loading && <Loading/>}
       <div className="b-admin__header">
         <h1 className="b-admin__title">Área Administrador</h1>
       </div>

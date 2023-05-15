@@ -29,7 +29,10 @@ export const postsReducer = (state = INITIAL_STATE, action) => {
                 loading: false
             };
         case "UPDATE_POST":
-            return {...state};
+            return {
+                ...state,
+                loading: false
+            };
         case "FILTERED_POSTS":
             return {
                 ...state,
@@ -49,7 +52,10 @@ export const postsReducer = (state = INITIAL_STATE, action) => {
                 postsByUser: []
             }
         case "DELETE_POST":
-            return {...state};
+            return {
+                ...state,
+                loading: false
+            };
         case "ERROR":
             return {
                 ...state,

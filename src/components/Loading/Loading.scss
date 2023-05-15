@@ -1,0 +1,17 @@
+.b-loading{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: calc(100vh - 90px);
+    background-color: var(--color-medium);
+    &__gif{
+        width: 100px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .b-loading{
+        height: calc(100vh - 160px);
+    }
+}

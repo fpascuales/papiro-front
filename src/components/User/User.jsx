@@ -3,7 +3,6 @@ import "./User.scss";
 import ButtonsAdmin from "../ButtonsAdmin/ButtonsAdmin";
 const User = ({ user, onOpenSuccess }) => {
   const defaultImage = '/assets/icons/papiro-icon-light.png';
-  console.log(user.image);
   return (
     <div className="b-user">
       <div className="b-user b-user--left">

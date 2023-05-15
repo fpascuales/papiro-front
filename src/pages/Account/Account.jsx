@@ -8,9 +8,10 @@ import { filteredPosts } from "../../redux/posts/posts.actions";
 import Post from "../../components/Post/Post";
 import { useForm } from "react-hook-form";
 import { updateUser } from "../../redux/users/users.actions";
+import Loading from "../../components/Loading/Loading";
 const Account = () => {
   const { register, handleSubmit, setValue } = useForm();
-  const { posts, postsFiltered } = useSelector((state) => state.posts);
+  const { loading, posts, postsFiltered } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.users);
   const { isOpenSuccess, onOpenSuccess, onCloseSuccess } = useModalSuccess();
   const [isEditMode, setIsEditMode] = useState(false);
@@ -35,6 +36,7 @@ const Account = () => {
   }
   return (
     <>
+    {loading && <Loading/>}
       {user !== null && (
         <div className="b-account">
           <div className="b-account__header">

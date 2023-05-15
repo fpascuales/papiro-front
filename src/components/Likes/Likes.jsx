@@ -13,7 +13,6 @@ const Likes = ({ likes }) => {
     }
     setIsLiked(!isLiked);
   };
-  console.log(likesCount);
   return (
     <div className='b-likes'>
       {isLiked ? (

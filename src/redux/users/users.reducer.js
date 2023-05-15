@@ -35,7 +35,10 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
                 loading: false
             };
         case "UPDATE_OTHER_USER":
-            return {...state};
+            return {
+                ...state,
+                loading: false
+            };
         case "LOGIN":
             return{
                 ...state,
@@ -50,7 +53,10 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
                 token: null
             };
         case "DELETE_USER":
-            return {...state};
+            return {
+                ...state,
+                loading: false
+            };
         case "ERROR":
             return {
                 ...state,

@@ -18,6 +18,7 @@ const getAllUsers = async () => {
 };
 const getUserById = async (userId) => {
   try {
+    dispatch({ type: "LOADING" });
     const result = await API.get(`users/${userId}`);
     dispatch({
       type: "GET_USER",
@@ -149,6 +150,7 @@ const logout = (navigate) => {
 }
 const deleteUser = async (userId, onCloseConfirm, onOpenSuccess) => {
   try {
+    dispatch({ type: "LOADING" });
     const result = await API.delete(`users/${userId}`);
     await getAllUsers();
     onCloseConfirm();
