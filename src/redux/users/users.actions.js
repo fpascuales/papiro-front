@@ -32,7 +32,6 @@ const getUserById = async (userId) => {
 };
 const login = async (dataLogin, onCloseLogin, navigate) => {
   try {
-    dispatch({ type: "LOADING" });
     const result = await API.post("users/login", dataLogin);
     dispatch({
       type: "LOGIN",
