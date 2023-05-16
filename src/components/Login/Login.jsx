@@ -28,7 +28,7 @@ const Login = ({ onCloseLogin }) => {
           placeholder="Contraseña"
           type="password"
         />
-        <p className="b-login-form__error">{error && error}</p>
+        <p className="b-login-form__error">{error}</p>
         <button className="b-login-form__btn">
           Iniciar Sesión
         </button>

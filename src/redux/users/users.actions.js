@@ -1,7 +1,6 @@
 import { API, APIIMAGES } from "../../shared/Api";
 import store from "../store";
 const { dispatch } = store;
-
 const getAllUsers = async () => {
   try {
     dispatch({ type: "LOADING" });
@@ -73,11 +72,10 @@ const signUp = async (dataRegister, navigate) => {
 const checkSession = async () => {
   try {
     const result = await API.get("users/check");
-    const isLoggedIn = result.data !== "No estás autorizado";
     dispatch({
       type: "LOGIN",
       payload: {
-        user: isLoggedIn ? result.data : null,
+        user: result.data !== "No estás autorizado" ? result.data : null,
         token: localStorage.getItem("token")
       }
     });

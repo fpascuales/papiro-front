@@ -8,11 +8,11 @@ function App() {
   useEffect(() => {
     getAllUsers();
     getAllPosts();
-    const token = localStorage.getItem("token");
-    if(token) {
-      checkSession();
-    }
-}, [])
+}, []);
+  const token = localStorage.getItem("token");
+  if(token) {
+    checkSession();
+  };
   return (
     <>
     <Header/>
