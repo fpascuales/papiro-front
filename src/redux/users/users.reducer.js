@@ -15,47 +15,55 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                users: [...action.payload.users]
+                users: [...action.payload.users],
+                error: null
             };
         case "GET_USER":
             return {
                 ...state,
                 loading: false,
-                userSelected: {...action.payload.userSelected}
+                userSelected: {...action.payload.userSelected},
+                error: null
             };
         case "REGISTER":
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: null
             };
         case "UPDATE_USER":
             return {
                 ...state,
                 user: action.payload,
-                loading: false
+                loading: false,
+                error: null
             };
         case "UPDATE_OTHER_USER":
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: null
             };
         case "LOGIN":
             return{
                 ...state,
                 loading: false,
                 user: action.payload.user,
-                token: action.payload.token
+                token: action.payload.token,
+                error: null
             };
         case "LOGOUT":
             return {
                 ...state,
                 user: null,
-                token: null
+                token: null,
+                error: null
             };
         case "DELETE_USER":
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: null
             };
         case "ERROR":
             return {

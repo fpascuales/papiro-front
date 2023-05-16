@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ButtonsPosts from "../ButtonsPosts/ButtonsPosts";
 import moment from "moment/moment";
 import "moment/locale/es";
-import Likes from "../Likes/Likes";
+// import Likes from "../Likes/Likes";
 const Post = ({ post, isAccount, onOpenSuccess }) => {
   moment.locale("es");
   const { users, user } = useSelector((state) => state.users);
