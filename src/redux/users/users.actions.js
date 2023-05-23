@@ -29,7 +29,7 @@ const getUserById = async (userId) => {
     dispatch({ type: "ERROR", payload: error.response.data });
   }
 };
-const login = async (dataLogin, onCloseLogin, navigate) => {
+const login = async (dataLogin, onCloseLogin) => {
   try {
     const result = await API.post("users/login", dataLogin);
     dispatch({
@@ -41,7 +41,8 @@ const login = async (dataLogin, onCloseLogin, navigate) => {
     });
     localStorage.setItem("token", result.data.token);
     onCloseLogin();
-    navigate("/");
+    // navigate("/");   METO EL RELOAD PARA RECARGAR LA PÁGINA Y QUE NO DE ERROR.
+    window.location.reload();
   } catch (error) {
     dispatch({ type: "ERROR", payload: error.response.data });
   }
