@@ -41,7 +41,6 @@ const login = async (dataLogin, onCloseLogin) => {
     });
     localStorage.setItem("token", result.data.token);
     onCloseLogin();
-    // navigate("/");   METO EL RELOAD PARA RECARGAR LA PÁGINA Y QUE NO DE ERROR.
     window.location.reload();
   } catch (error) {
     dispatch({ type: "ERROR", payload: error.response.data });
@@ -49,7 +48,6 @@ const login = async (dataLogin, onCloseLogin) => {
 };
 const signUp = async (dataRegister, navigate) => {
   try {
-    dispatch({ type: "LOADING" });
     const formData = new FormData();
     formData.append("username", dataRegister.username);
     formData.append("email", dataRegister.email);
